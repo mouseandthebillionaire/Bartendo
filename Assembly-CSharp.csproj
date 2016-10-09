@@ -45,11 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BackbarScript.cs" />
-     <Compile Include="Assets\GlassScript.cs" />
-     <Compile Include="Assets\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Scripts\AudioScript.cs" />
+     <Compile Include="Assets\Scripts\BackbarScript.cs" />
      <Compile Include="Assets\Scripts\ControlScript.cs" />
      <Compile Include="Assets\Scripts\CustomerScript.cs" />
+     <Compile Include="Assets\Scripts\GlassScript.cs" />
      <Compile Include="Assets\Scripts\MixingScript.cs" />
      <Compile Include="Assets\Scripts\OrderScript.cs" />
      <None Include="Assets\Scripts\comboList.txt" />

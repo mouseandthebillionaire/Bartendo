@@ -55,27 +55,26 @@ public class ControlScript : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.E)) {
 				if(customers[customer].active){
 					state = !state;
-					Debug.Log(state);
+					Debug.Log("State: "+state);
 					OrderScript.S.Order(customer);
 				} 
 			}
-		}
-
-		if(Input.GetKeyDown(KeyCode.S)) stocking = !stocking;
-		if(stocking && Input.GetKeyDown(KeyCode.W)) stocking = !stocking;
-
-		Debug.Log("Stocking: "+stocking);
-
-		if(!state) {
-			Choose();
-			OrderScript.S.Reset();
-		}
-
-		if(stocking){
+		} else {
 			if(Input.GetKeyDown(KeyCode.L)) {
 				GlassScript.S.Clean();
 			}
 		}
+
+		if(!state) {
+			Choose();
+			OrderScript.S.Reset();
+			if(Input.GetKeyDown(KeyCode.S)) stocking = !stocking;
+			if(stocking && Input.GetKeyDown(KeyCode.W)) stocking = !stocking;
+		}
+
+
+		Debug.Log("Stocking: "+stocking);
+
 
 		selector.transform.position = new Vector3(
 			sX[customer], 
@@ -86,17 +85,22 @@ public class ControlScript : MonoBehaviour {
 	void Choose() {
 		
 		if ( Input.GetKeyDown(KeyCode.D) ){
-			if (customer < 3) customer++;
-			else customer = 3;
+			if (customer < 3) {
+				customer++;
+				AudioScript.S.Select();
+			} else customer = 3;
 		}
 		if (Input.GetKeyDown(KeyCode.A) ){
-			if (customer > 0) customer--;
-			else customer = 0;
+			if (customer > 0) {
+				customer--;
+				AudioScript.S.Select();
+			} else customer = 0;
 		}
 	}
 
 	public void Served(){
 		customers[customer].GetComponent<CustomerScript>().Served();
+		AudioScript.S.Served();
 		if(annoyanceSpeed >= 5) annoyanceSpeed -= 5;
 		else annoyanceSpeed = 5;
 	}

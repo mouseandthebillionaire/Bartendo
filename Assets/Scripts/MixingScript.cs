@@ -41,9 +41,10 @@ public class MixingScript : MonoBehaviour {
 	}
 
 	public void Mix(){
-		if(Input.GetKeyDown(KeyCode.E)) Debug.Log("ding!");
+		if(Input.GetKeyDown(KeyCode.E)) Debug.Log("ding");
 		else if(Input.GetKeyDown(combo[currentPos])){
 			currentPos++;
+			AudioScript.S.Mix();
 			if((currentPos+1)>combo.Length){
 				ControlScript.state = false;
 				ControlScript.S.Served();
@@ -53,6 +54,7 @@ public class MixingScript : MonoBehaviour {
 		} else {
 			currentPos = 0;
 			ControlScript.state = false;
+			AudioScript.S.Wrong();
 		}
 	}
 		
