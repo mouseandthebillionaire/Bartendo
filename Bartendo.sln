@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F54EE15A-B972-4392-CE94-F660D7DA35B4}") = "Bartendo", "Assembly-CSharp.csproj", "{E238E016-A43C-E960-0B8A-3FDAA0B93C95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E238E016-A43C-E960-0B8A-3FDAA0B93C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E238E016-A43C-E960-0B8A-3FDAA0B93C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E238E016-A43C-E960-0B8A-3FDAA0B93C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E238E016-A43C-E960-0B8A-3FDAA0B93C95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
