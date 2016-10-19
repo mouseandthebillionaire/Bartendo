@@ -16,6 +16,15 @@ public class AudioScript : MonoBehaviour {
 	void Awake(){
 		S = this;
 	}
+
+	void Update(){
+		bool s = ControlScript.stocking;
+		if(s){
+			bg.GetComponent<AudioLowPassFilter>().cutoffFrequency = 500;
+		} else {
+			bg.GetComponent<AudioLowPassFilter>().cutoffFrequency = 5000;
+		}
+	}
 	
 	public void Select(){
 		dinger.PlayOneShot(select);

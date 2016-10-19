@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Bartendo</title>
+    <style>
+    /* a style sheet needs to be present for cursor hiding and custom cursors to work. */
+    	#canvas {
+	    	position: absolute;
+	    	left: 649px;
+	    	top: 237px;
+	    	z-index: 0;
+	    	clear: both;
+    	}
+    </style>
+  </head>
+  <body>
+	  <img src="background.jpg" />
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="147px" width="160px"></canvas>
+    <script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    dataUrl: "Release/ prototypes.data",
+    codeUrl: "Release/ prototypes.js",
+    memUrl: "Release/ prototypes.mem",
+    
+  };
+</script>
+<script src="Release/UnityLoader.js"></script>
+
+  </body>
+</html>
