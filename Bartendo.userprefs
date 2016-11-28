@@ -1,19 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/OrderScript.cs">
     <Files>
       <File FileName="Assets/Scripts/ControlScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/OrderScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/OrderScript.cs" Line="46" Column="60" />
       <File FileName="Assets/Scripts/CustomerScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MixingScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/comboList.txt" Line="1" Column="1" />
       <File FileName="Assets/Scripts/AudioScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/BackbarScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/StateManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/MB/Games/Unity/Bartendo/Assets/Scripts/ControlScript.cs" line="44" column="1" />
+      <Breakpoint file="/Users/MB/Games/Unity/Bartendo/Assets/Scripts/ControlScript.cs" line="42" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

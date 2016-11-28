@@ -17,7 +17,6 @@ public class BackbarScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		bool b = ControlScript.stocking;
-		Debug.Log(b);
 		if(b){
 			bg.SetActive(true);
 			directions.text ="Press L\nto Wash";

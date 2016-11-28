@@ -7,6 +7,8 @@ public class OrderScript : MonoBehaviour {
 	public static			OrderScript S;
 	public TextAsset		drinkList;
 	public string[]			drinks;
+	public TextAsset		orderList;
+	public string[]			orders;
 
 	public GameObject[]		arrows;
 	public GameObject		bg;
@@ -22,6 +24,7 @@ public class OrderScript : MonoBehaviour {
 		S = this;
 		bg.SetActive(false);
 		drinks = drinkList.text.Split('\n');
+		orders = orderList.text.Split('\n');
 		drinkNum = 0;
 		drink.text = "";
 		combo.text = "";
@@ -29,7 +32,7 @@ public class OrderScript : MonoBehaviour {
 
 	public void Order(int c){
 		bg.SetActive(true);
-		arrows[c].SetActive(true);
+		//arrows[c].SetActive(true);
 		drinkNum = Random.Range(0, drinks.Length);
 	}
 
@@ -38,7 +41,10 @@ public class OrderScript : MonoBehaviour {
 			for(int i=0; i<drinkCombo.Length; i++){
 				drinkComboString = drinkComboString + drinkCombo[i].ToUpper() + " ";
 			}
-			drink.text = drinks[drinkNum];
+			int orderNum = Random.Range(0, orders.Length);
+			string orderTemp = orders[orderNum];
+			drink.text = orderTemp.Replace("XXX", drinks[drinkNum]);
+			//drink.text = "Hey bub, can I get a " + drinks[drinkNum] + "?";
 			combo.text = drinkComboString.ToUpper();
 			drinkComboString = "";
 		} else {
@@ -48,8 +54,8 @@ public class OrderScript : MonoBehaviour {
 		
 	public void Reset(){
 		bg.SetActive(false);
-		int c = ControlScript.customer;
-		arrows[c].SetActive(false);
+		//int c = ControlScript.customer;
+		//arrows[c].SetActive(false);
 		drink.text = "";
 		drinkComboString = "";
 		combo.text = "";

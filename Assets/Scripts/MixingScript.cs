@@ -11,8 +11,6 @@ public class MixingScript : MonoBehaviour {
 	public string				currCombo;
 	public static string[]		combo;
 
-	public bool					mixing;
-
 	private int 		currentPos = 0;
 	private bool		mixed = false;
 
@@ -22,11 +20,17 @@ public class MixingScript : MonoBehaviour {
 	}
 
 	void Update() {
-		mixing = ControlScript.state;
-		if(mixing){
-			int thisCombo = OrderScript.drinkNum;
-			combo = GetCombo(thisCombo);
-			if(Input.anyKeyDown) Mix();
+		int state = StateManager.state;
+		Debug.Log(state);
+
+		if(state == 1){
+			if(!mixed){
+				int thisCombo = OrderScript.drinkNum;
+				combo = GetCombo(thisCombo);
+				mixed = true;
+			} else {
+				if(Input.anyKeyDown) Mix();
+			}
 		}
 	}
 
@@ -41,21 +45,26 @@ public class MixingScript : MonoBehaviour {
 	}
 
 	public void Mix(){
-		if(Input.GetKeyDown(KeyCode.E)) Debug.Log("ding");
-		else if(Input.GetKeyDown(combo[currentPos])){
+		if(Input.GetKeyDown(combo[currentPos])){
 			currentPos++;
 			AudioScript.S.Mix();
 			if((currentPos+1)>combo.Length){
-				ControlScript.state = false;
 				ControlScript.S.Served();
+				Debug.Log("right");
 				GlassScript.S.DirtyGlass();
-				currentPos = 0;
+				Clear();
 			}
 		} else {
-			currentPos = 0;
-			ControlScript.state = false;
-			AudioScript.S.Wrong();
+			Debug.Log("wrong");
+			AudioScript.S.Wrong(); 
+			Clear();
 		}
+	}
+
+	public void Clear(){
+		currentPos = 0;
+		StateManager.state = 0;
+		mixed = false; 
 	}
 		
 }

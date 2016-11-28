@@ -52,8 +52,10 @@
      <Compile Include="Assets\Scripts\GlassScript.cs" />
      <Compile Include="Assets\Scripts\MixingScript.cs" />
      <Compile Include="Assets\Scripts\OrderScript.cs" />
+     <Compile Include="Assets\Scripts\StateManager.cs" />
      <None Include="Assets\Scripts\comboList.txt" />
      <None Include="Assets\Scripts\drinkList.txt" />
+     <None Include="Assets\Scripts\orderList.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

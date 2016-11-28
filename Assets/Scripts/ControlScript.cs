@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ControlScript : MonoBehaviour {
 
-	public static bool			state; // false=choosing, true=mixing
 	public static bool			stocking;
 
 	public static int			customer;
@@ -30,7 +29,6 @@ public class ControlScript : MonoBehaviour {
 		customersFailed = 0;
 		customerFreq = 10f;
 		cChance = 0.25f;
-		state = false;
 		stocking = false;
 		annoyanceSpeed = 100f;
 	
@@ -38,7 +36,7 @@ public class ControlScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(customer);
+		int state = StateManager.state;
 
 		t = Time.time - startTime;
 
@@ -51,29 +49,18 @@ public class ControlScript : MonoBehaviour {
 			startTime = Time.time;
 		}
 
-		if(!stocking){
-			if(Input.GetKeyDown(KeyCode.E)) {
-				if(customers[customer].active){
-					state = !state;
-					Debug.Log("State: "+state);
-					OrderScript.S.Order(customer);
-				} 
-			}
-		} else {
-			if(Input.GetKeyDown(KeyCode.L)) {
-				GlassScript.S.Clean();
-			}
-		}
-
-		if(!state) {
+		if(state == 0){
 			Choose();
 			OrderScript.S.Reset();
-			if(Input.GetKeyDown(KeyCode.S)) stocking = !stocking;
-			if(stocking && Input.GetKeyDown(KeyCode.W)) stocking = !stocking;
 		}
 
-
-		Debug.Log("Stocking: "+stocking);
+		if(state == 1){
+			OrderScript.S.Order(customer);
+		} 
+		
+		if(state == 2){
+			GlassScript.S.Clean();
+		}
 
 
 		selector.transform.position = new Vector3(
@@ -97,6 +84,17 @@ public class ControlScript : MonoBehaviour {
 			} else customer = 0;
 		}
 	}
+
+	public bool CustomerThere(){
+		if(customers[customer].active){
+			return true;
+		} else {
+			return false;
+		}
+	}
+			
+			
+		
 
 	public void Served(){
 		customers[customer].GetComponent<CustomerScript>().Served();

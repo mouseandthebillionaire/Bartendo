@@ -4,12 +4,10 @@ using System.Collections;
 public class CustomerScript : MonoBehaviour {
 
 	public int				cNum;
-	public int				state;		
 	public Color[]			sColor;
 		
 	private float			chance;
 	private bool			order;
-	private bool			mixing;
 
 	public float			annoyance;
 	public GameObject		annoyanceBar;
@@ -27,6 +25,8 @@ public class CustomerScript : MonoBehaviour {
 		chance = ControlScript.cChance;
 		level = 0;
 		alphaAnnoyance = 0;
+
+		// make sure last customer is visible on game start
 		if(cNum == 3) gameObject.active = true;
 		else gameObject.active = false;
 	}
@@ -35,13 +35,13 @@ public class CustomerScript : MonoBehaviour {
 	void Update () {
 		int c = ControlScript.customer;
 		chance = ControlScript.cChance;
-		mixing = ControlScript.state;
+		int state = StateManager.state;
 
 		if(gameObject.active ){
 			annoyance = (Time.time - alphaAnnoyance) / ControlScript.annoyanceSpeed;
 			if(annoyance > 0.8f) {
 				gameObject.active = false;
-				if(c == cNum) ControlScript.state = false;
+				if(c == cNum) StateManager.state = 0;
 				ControlScript.customersFailed++;
 				alphaAnnoyance = Time.time;
 			}
@@ -50,7 +50,7 @@ public class CustomerScript : MonoBehaviour {
 		annoyanceBar.transform.localScale = new Vector3(.05f, annoyance, 1f);
 
 		if(c == cNum){
-			if(mixing){
+			if(state == 1){
 				this.GetComponent<SpriteRenderer>().color = sColor[0];
 			} else {
 				this.GetComponent<SpriteRenderer>().color = sColor[1];
